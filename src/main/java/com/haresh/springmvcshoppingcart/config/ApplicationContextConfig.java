@@ -1,5 +1,5 @@
 /**
- * @author Haresh Shaha
+ * Author: Haresh Shaha
  * Date: 21-11-2020
  */
 
