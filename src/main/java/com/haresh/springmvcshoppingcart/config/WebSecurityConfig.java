@@ -17,14 +17,14 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-//	@Autowired
-//	MyDBAuthenticationService myDBAauthenticationService;
-//
-//	@Autowired
-//	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//		// For User in database.
-//		auth.userDetailsService(myDBAauthenticationService);
-//	}
+	@Autowired
+	MyDBAuthenticationService myDBAauthenticationService;
+
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		// For User in database.
+		auth.userDetailsService(myDBAauthenticationService);
+	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

@@ -16,11 +16,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
@@ -41,24 +43,24 @@ public class ApplicationContextConfig {
 		return viewResolver;
 	}
 
-//	@Bean
-//	public ResourceBundleMessageSource messageSource() {
-//		ResourceBundleMessageSource rb = new ResourceBundleMessageSource();
-//		// Load property in message/validator.properties
-//		rb.setBasenames(new String[] { "messages/validator" });
-//		return rb;
-//	}
-//
-//	// Config for Upload.
-//	@Bean(name = "multipartResolver")
-//	public CommonsMultipartResolver multipartResolver() {
-//		CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
-//
-//		// Set Max Size...
-//		// commonsMultipartResolver.setMaxUploadSize(...);
-//
-//		return commonsMultipartResolver;
-//	}
+	@Bean
+	public ResourceBundleMessageSource messageSource() {
+		ResourceBundleMessageSource rb = new ResourceBundleMessageSource();
+		// Load property in message/validator.properties
+		rb.setBasenames(new String[] { "messages/validator" });
+		return rb;
+	}
+
+	// Config for Upload.
+	@Bean(name = "multipartResolver")
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+
+		// Set Max Size...
+		// commonsMultipartResolver.setMaxUploadSize(...);
+
+		return commonsMultipartResolver;
+	}
 
 	@Bean(name = "dataSource")
 	public DataSource getDataSource() {
@@ -104,23 +106,23 @@ public class ApplicationContextConfig {
 		return transactionManager;
 	}
 
-//	@Bean(name = "accountDAO")
-//	public AccountDAO getApplicantDAO() {
-//		return new AccountDAOImpl();
-//	}
-//
-//	@Bean(name = "productDAO")
-//	public ProductDAO getProductDAO() {
-//		return new ProductDAOImpl();
-//	}
-//
-//	@Bean(name = "orderDAO")
-//	public OrderDAO getOrderDAO() {
-//		return new OrderDAOImpl();
-//	}
-//
-//	@Bean(name = "accountDAO")
-//	public AccountDAO getAccountDAO() {
-//		return new AccountDAOImpl();
-//	}
+	@Bean(name = "accountDAO")
+	public AccountDAO getApplicantDAO() {
+		return new AccountDAOImpl();
+	}
+
+	@Bean(name = "productDAO")
+	public ProductDAO getProductDAO() {
+		return new ProductDAOImpl();
+	}
+
+	@Bean(name = "orderDAO")
+	public OrderDAO getOrderDAO() {
+		return new OrderDAOImpl();
+	}
+
+	@Bean(name = "accountDAO")
+	public AccountDAO getAccountDAO() {
+		return new AccountDAOImpl();
+	}
 }
