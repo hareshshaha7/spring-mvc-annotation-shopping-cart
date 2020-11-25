@@ -15,12 +15,12 @@ public interface ProductDao {
 
 	public ProductInfo findProductInfo(String code);
 
+	public void save(ProductInfo productInfo);
+
 	public PaginationResult<ProductInfo> queryProducts(int page, int maxResult,
 			int maxNavigationPage);
 
 	public PaginationResult<ProductInfo> queryProducts(int page, int maxResult,
 			int maxNavigationPage, String likeName);
-
-	public void save(ProductInfo productInfo);
 
 }
