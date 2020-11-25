@@ -51,7 +51,7 @@ public class ProductDaoImpl implements ProductDao {
 		}
 
 		boolean isNew = false;
-		if (product != null) {
+		if (product == null) {
 			isNew = true;
 			product = new Product();
 			product.setCreatedDate(new Date());

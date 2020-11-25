@@ -26,34 +26,35 @@ public class OrderDetails implements Serializable {
 	@Column(name = "id", length = 50, nullable = false)
 	private String id;
 
-	@Column(name = "amount", nullable = false)
-	private double amount;
+	@Column(name = "quanity", nullable = false)
+	private int quanity;
 
 	@Column(name = "price", nullable = false)
 	private double price;
 
-	@Column(name = "quanity", nullable = false)
-	private int quanity;
+	@Column(name = "amount", nullable = false)
+	private double amount;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "order_id", nullable = false, foreignKey = @ForeignKey(name = "ORDER_DETAIL_ORDER_FK"))
-	private String orderId;
+	private Order order;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_id", nullable = false, foreignKey = @ForeignKey(name = "ORDER_DETAIL_PRODUCT_FK"))
-	private String productId;
+	private Product product;
 
 	public OrderDetails() {
 	}
 
-	public OrderDetails(String id, double amount, double price, int quanity,
-			String orderId, String productId) {
+	public OrderDetails(String id, int quanity, double price, double amount,
+			Order order, Product product) {
+		super();
 		this.id = id;
-		this.amount = amount;
-		this.price = price;
 		this.quanity = quanity;
-		this.orderId = orderId;
-		this.productId = productId;
+		this.price = price;
+		this.amount = amount;
+		this.order = order;
+		this.product = product;
 	}
 
 	public String getId() {
@@ -64,12 +65,12 @@ public class OrderDetails implements Serializable {
 		this.id = id;
 	}
 
-	public double getAmount() {
-		return amount;
+	public int getQuanity() {
+		return quanity;
 	}
 
-	public void setAmount(double amount) {
-		this.amount = amount;
+	public void setQuanity(int quanity) {
+		this.quanity = quanity;
 	}
 
 	public double getPrice() {
@@ -80,38 +81,27 @@ public class OrderDetails implements Serializable {
 		this.price = price;
 	}
 
-	public int getQuanity() {
-		return quanity;
+	public double getAmount() {
+		return amount;
 	}
 
-	public void setQuanity(int quanity) {
-		this.quanity = quanity;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 
-	public String getOrderId() {
-		return orderId;
+	public Order getOrder() {
+		return order;
 	}
 
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
-	public String getProductId() {
-		return productId;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProductId(String productId) {
-		this.productId = productId;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	@Override
-	public String toString() {
-		return "OrderDetails [id=" + id + ", amount=" + amount + ", price="
-				+ price + ", quanity=" + quanity + ", orderId=" + orderId
-				+ ", productId=" + productId + "]";
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 }
